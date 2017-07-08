@@ -13,13 +13,15 @@ import { PlayResult } from "app/form-select-move/playResult";
 export class FormSelectMoveComponent implements OnInit {
   public playResult : PlayResult;
   public resultId : number;
-  public title : string
+
+  public playerMove : string;
+  public compMove : string;
+  public resultMove : string;
+
   constructor(private selectMoveService: SelectMoveService) {  
-    this.title = 'foo';
   }
 
   ngOnInit() {
-     this.getPlayResult(2);
   }
 
   getPlayResult(id : number) {
@@ -33,12 +35,35 @@ export class FormSelectMoveComponent implements OnInit {
   {
     console.log(res);
     this.playResult = res;
+    this.playerMove = this.idtoName(res.playerMove);
+    this.compMove = this.idtoName(res.compMove);
+
+    if(res.playerWin)
+      this.resultMove = 'You Win!';
+    else if (res.playerWin == null)
+      this.resultMove = 'Tie!';
+    else
+      this.resultMove = 'You Lose!';
+
+
     console.log(this.playResult);
+  }
+
+  idtoName(id : number)
+  {
+    if(id == 1)
+      return "Rock";
+    if(id == 2)
+      return "Paper";
+    if(id == 3)
+      return "Scissors";
+    alert('broken');
+    return "";
   }
 
 
   onSubmitRock() { 
-    this.selectMoveService.create(new Move(1,"Rock")).subscribe(res => this.getPlayResult(res), error => alert(error));
+    this.selectMoveService.create(new Move(1,"Rock")).subscribe(res => this.resSubmitHelper(res), error => alert(error));
   }
 
   onSubmitPaper() { 
@@ -54,6 +79,6 @@ export class FormSelectMoveComponent implements OnInit {
   }
 
   onSubmitScissors() { 
-    this.selectMoveService.create(new Move(3,"Scissors")).subscribe(move => this.resultId = move, error => alert(error));
+    this.selectMoveService.create(new Move(3,"Scissors")).subscribe(res => this.resSubmitHelper(res), error => alert(error));
   }
 }

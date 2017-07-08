@@ -1,19 +1,15 @@
 <div class="container">
     <h1>Selection</h1>
-      <label>{{title}}</label>
     <div *ngIf="playResult">
-          <li >{{playResult.playerMove}}</li>
-          <li >{{playResult.compMove}}</li>
-          <li >{{playResult.playerWin}}</li>
+      <label>Results!</label>
+      
+          <label>Player Move: {{playerMove}}</label>
+          <label >Comp Move: {{compMove}}</label>
+          <label >Result: {{resultMove}}</label>
     </div>
     
     <form>
     <ul>
-      <label>Results!</label>
-      <li >{{title}}</li>
-      
-      <label>Results Bottom!</label>
-        
       <li>
       <button
         (click)="onSubmitRock()"
