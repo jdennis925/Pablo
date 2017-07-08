@@ -1,16 +1,43 @@
 <div class="container">
     <h1>Selection</h1>
+      <label>{{title}}</label>
+    <div *ngIf="playResult">
+          <li >{{playResult.playerMove}}</li>
+          <li >{{playResult.compMove}}</li>
+          <li >{{playResult.playerWin}}</li>
+    </div>
+    
     <form>
-      <div class="form-group">
-          <input type="radio" name="move" value="Rock" checked> Rock<br>
-          <input type="radio" name="move" value="Paper"> Paper<br>
-          <input type="radio" name="move" value="Scissors"> Scissors <br>
-      </div>
+    <ul>
+      <label>Results!</label>
+      <li >{{title}}</li>
+      
+      <label>Results Bottom!</label>
+        
+      <li>
       <button
-        (click)="onSubmit()"
+        (click)="onSubmitRock()"
         type="submit" 
         class="btn btn-success" >
-          Submit
+          Rock
       </button>
+        </li>
+        <li>
+      <button
+        (click)="onSubmitPaper()"
+        type="submit" 
+        class="btn btn-success" >
+          Paper
+      </button>
+        </li>
+        <li>
+      <button
+        (click)="onSubmitScissors()"
+        type="submit" 
+        class="btn btn-success" >
+          Scissors
+      </button>
+        </li>
+    </ul>
     </form>
 </div>
