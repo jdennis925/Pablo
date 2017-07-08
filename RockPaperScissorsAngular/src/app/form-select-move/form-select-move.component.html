@@ -1,0 +1,16 @@
+<div class="container">
+    <h1>Selection</h1>
+    <form>
+      <div class="form-group">
+          <input type="radio" name="move" value="Rock" checked> Rock<br>
+          <input type="radio" name="move" value="Paper"> Paper<br>
+          <input type="radio" name="move" value="Scissors"> Scissors <br>
+      </div>
+      <button
+        (click)="onSubmit()"
+        type="submit" 
+        class="btn btn-success" >
+          Submit
+      </button>
+    </form>
+</div>
