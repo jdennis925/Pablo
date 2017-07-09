@@ -13,9 +13,10 @@ import { PlayResult } from "app/form-select-move/playResult";
 export class FormSelectMoveComponent implements OnInit {
   public playResult : PlayResult;
   public resultId : number;
-
   public playerMove : string;
+  public playerImagePath : string;
   public compMove : string;
+  public compImagePath
   public resultMove : string;
 
   constructor(private selectMoveService: SelectMoveService) {  
@@ -37,6 +38,8 @@ export class FormSelectMoveComponent implements OnInit {
     this.playResult = res;
     this.playerMove = this.idtoName(res.playerMove);
     this.compMove = this.idtoName(res.compMove);
+    this.playerImagePath = this.GetPlayerImagePath(res.playerMove);
+    this.compImagePath = this.GetCompImagePath(res.compMove);
 
     if(res.playerWin)
       this.resultMove = 'You Win!';
@@ -47,6 +50,30 @@ export class FormSelectMoveComponent implements OnInit {
 
 
     console.log(this.playResult);
+  }
+
+  GetPlayerImagePath(id: number)
+  {
+    if(id == 1)
+      return "/assets/playerRock.jpg";
+    if(id == 2)
+      return "/assets/playerPaper.jpg";
+    if(id == 3)
+      return "/assets/playerScissors.jpg";
+    alert('broken');
+    return "";
+  }
+
+  GetCompImagePath(id: number)
+  {
+    if(id == 1)
+      return "/assets/compRock.jpg";
+    if(id == 2)
+      return "/assets/compPaper.jpg";
+    if(id == 3)
+      return "/assets/compScissors.jpg";
+    alert('broken');
+    return "";
   }
 
   idtoName(id : number)
