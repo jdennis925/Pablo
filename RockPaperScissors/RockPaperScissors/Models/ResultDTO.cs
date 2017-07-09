@@ -10,5 +10,6 @@ namespace RockPaperScissors.Models
         public int PlayerMove { get; set; }
         public int CompMove { get; set; }
         public bool? Win { get; set; }
+        public int id { get; set; }
     }
 }

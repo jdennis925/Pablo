@@ -1,42 +1,37 @@
 <div class="container">
     <h1>Selection</h1>
-    <div *ngIf="playResult">
-      <label>Results!</label>
-      
-          <label>Player Move: {{playerMove}}</label>
-          <img [src]="playerImagePath"  class="resize">
-          <label >Comp Move: {{compMove}}</label>
-          <img [src]="compImagePath"  class="resize">
-          
-          <label >Result: {{resultMove}}</label>
-    </div>
-    
-    <form>
-    <ul>
-      <li>
+    <div>
       <button
         (click)="onSubmitRock()"
         type="submit" 
         class="btn btn-success" >
           Rock
       </button>
-        </li>
-        <li>
       <button
         (click)="onSubmitPaper()"
         type="submit" 
         class="btn btn-success" >
           Paper
       </button>
-        </li>
-        <li>
       <button
         (click)="onSubmitScissors()"
         type="submit" 
         class="btn btn-success" >
           Scissors
       </button>
+    </div>
+    <div *ngIf="playResult">
+      <ul style="list-style-type:none">
+        <li><label>Round: {{roundId}}</label></li>
+        <li><label >Result: {{resultMove}}</label></li>
+        <li>
+          <label>Player Move: {{playerMove}}</label>
+          <img [src]="playerImagePath"  class="resize">
         </li>
-    </ul>
-    </form>
+        <li>
+          <label >Comp Move: {{compMove}}</label>
+          <img [src]="compImagePath"  class="resize">
+        </li>
+      </ul>  
+    </div>
 </div>

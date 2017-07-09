@@ -26,9 +26,10 @@ namespace RockPaperScissors.Repositories
                 reader.Read();
                 result = new ResultDTO
                 {
+                    id = id,
                     PlayerMove = reader.GetInt32(1),
                     CompMove = reader.GetInt32(2),
-                    Win = reader[3] as bool?
+                    Win = reader[3] as bool?,
                 };
             }
             return result;

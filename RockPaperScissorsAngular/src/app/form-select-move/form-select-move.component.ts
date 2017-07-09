@@ -11,7 +11,8 @@ import { PlayResult } from "app/form-select-move/playResult";
   providers: [SelectMoveService],
 })
 export class FormSelectMoveComponent implements OnInit {
-  public playResult : PlayResult;
+  public roundId: number;
+  public playResult: PlayResult;
   public resultId : number;
   public playerMove : string;
   public playerImagePath : string;
@@ -40,7 +41,7 @@ export class FormSelectMoveComponent implements OnInit {
     this.compMove = this.idtoName(res.compMove);
     this.playerImagePath = this.GetPlayerImagePath(res.playerMove);
     this.compImagePath = this.GetCompImagePath(res.compMove);
-
+    this.roundId = res.id
     if(res.playerWin)
       this.resultMove = 'You Win!';
     else if (res.playerWin == null)
